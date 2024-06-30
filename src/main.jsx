@@ -4,13 +4,17 @@ import {
    createBrowserRouter,
    RouterProvider,
 } from "react-router-dom";
+
+import Root from "./routes/root";
+
 import "./index.css";
 
 // "root route" (other routes render inside it)
 const router = createBrowserRouter([
    {
+      title: "root",
       path: "/",
-      element: <div> Hello world!</div>,
+      element: <Root />,
    },
 ]);
 
