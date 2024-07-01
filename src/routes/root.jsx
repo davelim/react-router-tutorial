@@ -1,6 +1,6 @@
 import {
     Outlet,
-    Link,
+    NavLink,
     useLoaderData,
     Form,
     redirect,
@@ -53,7 +53,16 @@ export default function Root() {
                     {/* Map contacts to list elements*/}
                     {contacts.map((contact) => (
                         <li key={contact.id}>
-                            <Link to={`contacts/${contact.id}`}>
+                            <NavLink
+                                to={`contacts/${contact.id}`}
+                                className={({isActive, isPending}) =>
+                                    isActive
+                                    ? "active"
+                                    : isPending
+                                    ? "pending"
+                                    : ""
+                                }
+                            >
                                 {contact.first || contact.last
                                 ? (
                                     <>
@@ -65,7 +74,7 @@ export default function Root() {
                                 )}
                                 {" "}
                                 {contact.favorite && <span>★</span>}
-                            </Link>
+                            </NavLink>
                         </li>
                     ))}
                 </ul>
